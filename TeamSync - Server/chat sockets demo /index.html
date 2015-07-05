@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <title>PHP WebSockets - Server demo</title>
+  <link rel="stylesheet" href="css/style.css?1" media="all" />
+</head>
+<body>
+  <h1>PHP WebSocket server demo</h1>
+  <p class="description">A PHP library implementing the WebSockets protocol (RFC6455).</p>
+  <section>
+    <div class="chat-container">
+      <div id="chat-window"></div>
+      <ul id="userlist"><li>Not connected</li></ul>
+    </div>
+    <div class="control">
+      <input id="message" placeholder="Enter your message here...">
+      <div id="submit" class="button">Send</div>
+    </div>
+  </section>
+  <footer>
+   
+  </footer>
+  <script src="js/chatserver.js?1"></script>
+  <script type="text/javascript">
+      /* Create a new chatserver client */
+      var chatServer = new ChatServer('ws://66.228.33.88:8081', document.getElementById('chat-window'),
+                                      document.getElementById('userlist'));
+      
+      /* Connect to the server */
+      chatServer.connect();
+     
+      /* Method used to handle userevents */
+      function processCommand()
+      {
+          /* The inputfield in which messages and command are typed by the user */
+          var inputField = document.getElementById('message');
+          
+          /* The value or content of the textfield */
+          var fieldValue = inputField.value;
+          
+          /* Check whether it is a normal message or a nickchange command */
+          if (fieldValue.substring(0, 5).toLowerCase() == '/nick')
+          {
+              chatServer.changeNick(fieldValue.substring(6));
+          }
+          else
+          {
+              chatServer.postMessage(fieldValue);
+          }
+
+          /* Clear the inputfield again for the next message */
+          inputField.value = '';
+      }
+
+
+      /* Hook to the correct events. */
+      document.getElementById('submit').onclick = processCommand;
+      document.getElementById('message').onkeypress = function(e) {
+          /* Only submit when enter is pressed in the input field */
+          if(e.keyCode == 13)
+          {
+              processCommand();   
+          }
+      }
+  </script>
+</body>
+</html>
