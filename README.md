@@ -14,4 +14,4 @@ Well, I never got outside funding and with a project like this, you're hoping to
 
 In addition, similar ideas have never really caught on. I knew it would be foolish to keep at something others had failed at without my own resources. I still think there's room for the right kind of real time media sharing app in the market, but it's probably not going to be a music sharing app like this.
 
-One idea that could use this tech would be a "Museum guided tour app". Most museums still use headsets that are rented or borrowed. It'd be cool to have something that worked with users' phones that had more flexibility, perhaps some augmented reality features, too.
+One idea that could use this tech would be a "Museum guided tour app". Most museums still use headsets that are rented or borrowed. It'd be cool to have something that worked with users' phones that had more flexibility, perhaps some augmented reality features, e.g.
